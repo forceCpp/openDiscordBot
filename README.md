@@ -12,9 +12,8 @@ for a openai API key visit **https://beta.openai.com/signup/**
 # Install
 you need python to be installed
 
-and install the discord.py and openai with `pip install discord.py` and `pip install openai`
+and install the discord.py and openai with the command `pip install discord.py` and `pip install openai`
 
-this is app
 
 # Run 
 if you created the `.env` file and enterd the api key and discord bot token
