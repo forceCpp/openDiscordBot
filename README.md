@@ -10,7 +10,7 @@ you can create a discord bot and get you token at **https://discord.com/develope
 for a openai API key visit **https://beta.openai.com/signup/**
 
 # Install
-you need python to be installed
+you need to have python and pip to be installed
 
 and install the discord.py and openai with the command `pip install discord.py` and `pip install openai`
 
