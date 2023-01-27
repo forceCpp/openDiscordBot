@@ -1,7 +1,7 @@
 # discordGPT
 hi this is a simpe Discord bot the used GPT-3 model
 
-crate a `.env` file and enter this
+add this to the `.env` file
 ```
 API_KEY =your_openai_api_key
 TOKEN=discord_token
@@ -16,9 +16,12 @@ and install the discord.py and openai with the command `pip install discord.py` 
 
 
 # Run 
-if you created the `.env` file and enterd the api key and discord bot token
+when you modified the `.env` your can do the next step
+
+
 **windows**
 `python main.py`
 
 **Linux/Mac**
 `python3 main.py`
+
