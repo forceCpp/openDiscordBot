@@ -3,12 +3,13 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import os
 import openai
-api_keys = ".env_openai"
-openai.api_key_path = api_keys
-
 
 load_dotenv()
-mytoken = os.getenv("TOKEN")
+discordtoken = os.getenv("TOKEN")
+openai_api_key = os.getenv("API_KEY")
+openai.api_key = openai_api_key 
+
+
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='$', intents=intents)
@@ -21,4 +22,4 @@ async def chat(ctx, *, message: str):
     return
 
 
-bot.run(mytoken)
+bot.run(discordtoken)
