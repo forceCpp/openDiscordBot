@@ -21,5 +21,5 @@ if you created the `.env` file and enterd the api key and discord bot token
 **windows**
 `python main.py`
 
-**Linuy/Mac**
+**Linux/Mac**
 `python3 main.py`
