@@ -12,7 +12,7 @@ for a openai API key visit **https://beta.openai.com/signup/**
 # Install
 you need to have python and pip installed
 
-if you have python tun the command `pip install -r requirements.txt` to install all the requirements
+if you have python installed then run this command `pip install -r requirements.txt` to install all the requirements
 
 
 # Run 
