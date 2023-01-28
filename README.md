@@ -1,5 +1,5 @@
 # discordGPT
-hi this is a simpe Discord bot the used GPT-3 model
+hi this is a simpe Discord bot
 
 add this to the `.env` file
 ```
@@ -10,9 +10,9 @@ you can create a discord bot and get you token at **https://discord.com/develope
 for a openai API key visit **https://beta.openai.com/signup/**
 
 # Install
-you need to have python , pip and ffmpeg installed
+you need to have python and pip installed
 
-and install the discord.py and openai with the command `pip install discord.py` and `pip install openai`
+if you have python tun the command `pip install -r requirements.txt` to install all the requirements
 
 
 # Run 
@@ -25,4 +25,9 @@ when you modified the `.env` your can do the next step
 **Linux/Mac**
 `python3 main.py`
 
+
+# Usage
+`$chat` lets you chat with chatGPT with the `openai` lib
+
+`$meme` it uses the  <a href="https://github.com/D3vd/Meme_Api">Meme Api</a>  api to send random memes  
 
