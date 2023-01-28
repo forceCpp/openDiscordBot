@@ -27,7 +27,7 @@ when you modified the `.env` your can do the next step
 
 
 # Usage
-`$chat` lets you chat with chatGPT with the `openai` lib
+`$chat` lets you chat with chatGPT using the openai Api lib
 
 `$meme` it uses the  <a href="https://github.com/D3vd/Meme_Api">Meme Api</a>  api to send random memes  
 
