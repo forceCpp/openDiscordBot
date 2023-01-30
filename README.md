@@ -10,7 +10,7 @@ you can create a discord bot and get you token at **https://discord.com/develope
 for a openai API key visit **https://beta.openai.com/signup/**
 
 # Install
-you need to have python and pip installed
+you need to have python, ffmpeg and pip installed
 
 if you have python installed then run this command `pip install -r requirements.txt` to install all the requirements
 
@@ -31,3 +31,5 @@ when you modified the `.env` your can do the next step
 
 `$meme` it uses the  <a href="https://github.com/D3vd/Meme_Api">Meme Api</a>  to send random memes  
 
+`$play, $stop, $resume, pause` you can use thies commands to play music from youtube it uses the **youtube-dl** lib in python
+but you might get some errors like `403` error just run the command again it will workin at the 2 time
