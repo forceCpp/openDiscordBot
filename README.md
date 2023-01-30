@@ -1,5 +1,4 @@
-# discordGPT
-hi this is a simpe Discord bot
+# Start
 
 add this to the `.env` file
 ```
