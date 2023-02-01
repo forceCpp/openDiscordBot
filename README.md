@@ -2,9 +2,11 @@
 you need to have python, ffmpeg and pip installed
 
 ´´´
+
 git clone https://github.com/forceCpp/openDiscordBot.git
 cd  openDiscordBot
 pip install -r requirements.txt
+
 ´´´
 
 # setup
