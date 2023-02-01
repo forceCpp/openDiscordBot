@@ -1,5 +1,5 @@
 # Install
-you need to have python, ffmpeg and pip installed
+you need to have **<a herf="https://www.python.org/"python></a>** and **<a herf="https://ffmpeg.org/download.html">ffmpeg</a>** installed
 
 ```
 git clone https://github.com/forceCpp/openDiscordBot.git
@@ -20,7 +20,7 @@ for a openai API key visit **https://beta.openai.com/signup/**
 
 # Run 
 
-**windows**
+**Windows**
 `python main.py`
 
 **Linux/Mac**
