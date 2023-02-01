@@ -1,5 +1,5 @@
 # Install
-you need to have <a herf="https://www.python.org/">python</a> and <a herf="https://ffmpeg.org/download.html">ffmpeg</a> installed
+you need to have **<a href="https://www.python.org/">python</a>** and **<a href="https://ffmpeg.org/download.html">ffmpeg</a>** installed
 
 ```
 git clone https://github.com/forceCpp/openDiscordBot.git
@@ -32,4 +32,4 @@ for a openai API key visit **https://beta.openai.com/signup/**
 
 `$meme` it uses the  <a href="https://github.com/D3vd/Meme_Api">Meme Api</a>  to send random memes  
 
-`$play` to play music from youtube it uses <a herf="https://github.com/ytdl-org/youtube-dl">youtube-dl</a>
+`$play` to play music from youtube it uses <a href="https://github.com/ytdl-org/youtube-dl">youtube-dl</a>
