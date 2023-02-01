@@ -10,10 +10,10 @@ pip install -r requirements.txt
 # setup
 
 add this to the `.env` file
-```
+`
 API_KEY =your_openai_api_key
 TOKEN=discord_token
-```
+`
 you can create a discord bot and get you token at **https://discord.com/developers/applications**
 for a openai API key visit **https://beta.openai.com/signup/**
 
