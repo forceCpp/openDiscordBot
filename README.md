@@ -35,7 +35,7 @@ for a openai API key visit **https://beta.openai.com/signup/**
 `$play` to play music from youtube it uses <a  href="https://github.com/ytdl-org/youtube-dl">youtube-dl</a>
 
 # preview
-[![Demo CountPages alpha](https://raw.githubusercontent.com/forceCpp/openDiscordBot/main/preview/chat.mp4)]
+![Demo CountPages alpha(https://raw.githubusercontent.com/forceCpp/openDiscordBot/main/preview/chat.mp4)]
 
 [![Watch the video](https://github.com/forceCpp/openDiscordBot/blob/main/preview/meme.png)](https://raw.githubusercontent.com/forceCpp/openDiscordBot/main/preview/meme.mp4)
 
