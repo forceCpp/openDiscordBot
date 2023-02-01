@@ -36,8 +36,8 @@ for a openai API key visit **https://beta.openai.com/signup/**
 
 # try
 give the bot a try 
-> **note**its not allways online cuz i am stil working on it
+> **note** its not allways online cuz i am stil working on it
 but when its done it will be online for ever
->
+
 
 ` https://discord.com/api/oauth2/authorize?client_id=1068497688628305970&permissions=8&scope=bot `
