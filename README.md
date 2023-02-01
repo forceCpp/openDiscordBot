@@ -34,6 +34,11 @@ for a openai API key visit **https://beta.openai.com/signup/**
 
 `$play` to play music from youtube it uses <a  href="https://github.com/ytdl-org/youtube-dl">youtube-dl</a>
 
+# preview
+![Watch the video](https://github.com/forceCpp/openDiscordBot/blob/main/preview/chat.png)](https://raw.githubusercontent.com/forceCpp/openDiscordBot/main/preview/chat.mp4)
+
+![Watch the video](https://github.com/forceCpp/openDiscordBot/blob/main/preview/meme.png)](https://raw.githubusercontent.com/forceCpp/openDiscordBot/main/preview/meme.mp4)
+
 # try
 give the bot a <a  href="https://discord.com/api/oauth2/authorize?client_id=1068497688628305970&permissions=8&scope=bot">try</a>
 > **note** its not allways online cuz i am stil working on it
