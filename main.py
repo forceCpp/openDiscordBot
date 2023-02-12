@@ -7,9 +7,13 @@ from requests import get
 import openai
 import json
 import asyncio
+import requests
+import time
 import youtube_dl
 from discord.voice_client import VoiceClient
 from pydub import AudioSegment
+from googletrans import Translator
+from langdetect import detect
 load_dotenv()
 discordtoken = os.getenv("TOKEN")
 openai_api_key = os.getenv("API_KEY")
@@ -30,15 +34,19 @@ ffmpeg_options = {'options': "-vn"}
 async def on_ready():
     print("bot is ready")
 
-#@bot.event
-#async def on_message(message):
-#    await message.content.lower()
 
 @bot.command()
-async def chat(ctx, *, message: str):
-    response = openai.Completion.create(engine="text-davinci-002", prompt=message)
-    await ctx.send(ctx.message.author.name ,response.choices[0].text)
-    return
+async def chat(ctx, *, message: str = None):
+    if message is None:
+        await ctx.send(f"please enter somthing after **$chat** {ctx.message.author.mention}.")
+        return
+    try:        
+        response = openai.Completion.create(engine="text-davinci-002", prompt=message)
+        await ctx.send(f"{response.choices[0].text} ~{ctx.message.author.mention}")
+        return
+    except:
+        await ctx.send(f"**AuthenticationError** Incorrect API key provided You can find your API key at https://platform.openai.com/account/api-keys. And please make your that you have internet connection")
+        
 
 @bot.command()
 async def meme(ctx):
@@ -51,31 +59,37 @@ async def meme(ctx):
 @bot.command()
 async def play(ctx, url: str):
     try:
-        voice_cal = await ctx.author.voice.channel.connect()
+        voice_client = await ctx.author.voice.channel.connect()
         info = ytdl.extract_info(url, download=False)
         audio_url = info["url"]
-        voice_cal.play(discord.FFmpegPCMAudio(audio_url))
+        voice_client.play(discord.FFmpegPCMAudio(audio_url))
         #sound = AudioSegment.from_file(audio_url, format="mp3")
-        #voice_cal.play(discord.FFmpegPCMAudio(sound))
+        #voice_client.play(discord.FFmpegPCMAudio(sound))
+        if voice_client is None:
+            voice_client = ctx.voice_client
+            await voice_client.disconnect()
+        
     except discord.errors.ClientException:
-        voice_client = ctx.voice_client
         await voice_client.disconnect()
+    except AttributeError:
+        await ctx.send(f"johin a voice channel")
+
 @bot.command()
 async def pause(ctx):
     voice_client = ctx.guild.voice_client
     if voice_client and voice_client.is_playing():
         voice_client.pause()
-        await ctx.send("Paused the current song.")
+        await ctx.send(f"Paused the current song {ctx.message.author.mention}.")
     else:
-        await ctx.send("Not playing any song.")
+        await ctx.send(f"Not playing any song {ctx.message.author.mention}.")
 @bot.command()
 async def resume(ctx):
     voice_client = ctx.guild.voice_client
     if voice_client:
         voice_client.resume()
-        await ctx.send("resume the current song.")
+        await ctx.send(f"resume the current song {ctx.message.author.mention}.")
     else:
-        await ctx.send("Not playing any song.")
+        await ctx.send("fNot playing any song {ctx.message.author.mention}.")
 
 @bot.command()
 async def stop(ctx):
@@ -83,5 +97,20 @@ async def stop(ctx):
             voice_client = ctx.voice_client
             await voice_client.disconnect()
        except:
-            await ctx.send("not in a voice channel dont fool me")
+            await ctx.send(f"not in a voice channel dont fool me {ctx.message.author.mention}.")
+
+@bot.command()
+async def rdog(ctx):
+    const = requests.get("https://random.dog/woof.json")
+    stuff = json.loads(const.text)
+    embed = discord.Embed(title=f"URL: {stuff['url']}", color = discord.Color.random())
+    embed.set_image(url=f"{stuff['url']}")
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def translate(ctx, *, thing):
+    translator = Translator()
+    translation = translator.translate(thing).text
+    await ctx.send(translation)
+
 bot.run(discordtoken)
