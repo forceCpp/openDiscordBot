@@ -13,7 +13,6 @@ import youtube_dl
 from discord.voice_client import VoiceClient
 from pydub import AudioSegment
 from googletrans import Translator
-from langdetect import detect
 load_dotenv()
 discordtoken = os.getenv("TOKEN")
 openai_api_key = os.getenv("API_KEY")
@@ -122,10 +121,10 @@ async def rdog(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def translate(ctx, *, thing):
+async def translate(ctx, dest_lang: str, *, text: str):
     translator = Translator()
-    translation = translator.translate(thing).text
-    await ctx.send(translation)
+    translated_text = translator.translate(text, dest=dest_lang).text
+    await ctx.send(f"Translation: {translated_text}")
 
 @bot.command()
 async def news(ctx, innews):
