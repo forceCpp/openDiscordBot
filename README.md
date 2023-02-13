@@ -10,7 +10,7 @@ pip install -r requirements.txt
 # setup
 
 add this to the `.env` file
-> if you cant find the file it might be hidded
+> if you cant find the .env file it might be hidded
 
 ```
 API_KEY =your_openai_api_key
@@ -47,3 +47,5 @@ give the bot a <a  href="https://discord.com/api/oauth2/authorize?client_id=1068
 
 # usage
 you can use the `$doc` command for the documentation
+
+all other  information is <a  href="https://github.com/forceCpp/openDiscordBot/blob/main/documentation.txt">hier</a> available
