@@ -10,6 +10,7 @@ pip install -r requirements.txt
 # setup
 
 add this to the `.env` file
+> if you cant find the file it might be hidded
 
 ```
 API_KEY =your_openai_api_key
@@ -18,8 +19,8 @@ NEWS_API_KEY=news_api_key
 ```
 you can create a discord bot and get you token at **https://discord.com/developers/applications**
 for a openai API key visit **https://beta.openai.com/signup/**
-for news visit **https://newsapi.org/**
-> only Requests 1,000 are allowed per day
+for news api visit **https://newsapi.org/**
+> only Requests 1,000 are allowed per day for the news api
 
 # Run 
 
