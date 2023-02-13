@@ -17,8 +17,8 @@ from langdetect import detect
 load_dotenv()
 discordtoken = os.getenv("TOKEN")
 openai_api_key = os.getenv("API_KEY")
-openai.api_key = openai_api_key 
-
+openai.api_key = openai_api_key
+news_key = os.getenv("NEWS_API_KEY")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -33,6 +33,20 @@ ffmpeg_options = {'options': "-vn"}
 @bot.event
 async def on_ready():
     print("bot is ready")
+
+
+@bot.command()
+async def doc(ctx):
+    embed = discord.Embed(title="List of available commands:", color=discord.Color.blue())
+    embed.add_field(name="$chat", value="This command lets you have a conversation with the bot. Usage: $chat [message]")
+    embed.add_field(name="$meme", value="This command sends a random meme. Usage: $meme")
+    embed.add_field(name="$play", value="This command plays a YouTube video in the voice channel you are in. Usage: $play [YouTube video URL]")
+    embed.add_field(name="$pause", value="This command pauses the currently playing YouTube video. Usage: $pause")
+    embed.add_field(name="$resume", value="This command resumes the currently paused YouTube video. Usage: $resume")
+    embed.add_field(name="$stop", value="This command stops the currently playing YouTube video. Usage: $stop")
+    embed.add_field(name="$rdog", value="This command sends a random dog image. Usage: $rdog")
+    embed.add_field(name="$translate", value="This command translates text to a specified language. Usage: $translate [language code] [text]")
+    await ctx.send(embed=embed)
 
 
 @bot.command()
@@ -112,5 +126,19 @@ async def translate(ctx, *, thing):
     translator = Translator()
     translation = translator.translate(thing).text
     await ctx.send(translation)
+
+@bot.command()
+async def news(ctx, innews):
+    news = requests.get(f"https://newsapi.org/v2/everything?q={innews}&apiKey={news_key}").json()
+    thnews = news["articles"]
+    if news["status"] == "ok":
+        for i , article in enumerate(thnews):
+            if i < 5:
+                emend = discord.Embed(title=article["title"], description=article["description"], url=article["url"],color=discord.Color.blue())
+                await ctx.send(embed=emend)
+            else:
+                break
+    else:
+        await ctx.send(f"{innews} not found please try again")
 
 bot.run(discordtoken)
