@@ -140,4 +140,20 @@ async def news(ctx, innews):
     else:
         await ctx.send(f"{innews} not found please try again")
 
+@bot.command()
+async def imggen(ctx, *, text: str = None):
+    try:
+        if text is None:
+            await ctx.send("please enter some text")
+            return
+        await ctx.send("please wait a second genarting image")
+        response = openai.Image.create(
+            prompt=text,
+            n=1,
+            size="256x256",
+
+        )
+        await ctx.send(response["data"][0]["url"])
+    except:
+        await ctx.send("nsfw images are not allowed")
 bot.run(discordtoken)

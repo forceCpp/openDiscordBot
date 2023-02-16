@@ -1,6 +1,5 @@
 discord.py==2.1.1
 googletrans==3.0.0
-langdetect==1.0.9
 openai==0.26.2
 pydub==0.25.1
 python-dotenv==0.21.1
