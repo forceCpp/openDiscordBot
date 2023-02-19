@@ -9,7 +9,7 @@ import json
 import asyncio
 import requests
 import time
-import youtube_dl
+import yt_dlp
 from discord.voice_client import VoiceClient
 from pydub import AudioSegment
 from googletrans import Translator
@@ -24,7 +24,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix='$', intents=intents)
 
 yt_dl_opts = {'format': 'bestaudio/best'}
-ytdl = youtube_dl.YoutubeDL(yt_dl_opts)
+ytdl = yt_dlp.YoutubeDL(yt_dl_opts)
 
 ffmpeg_options = {'options': "-vn"}
 
@@ -45,6 +45,7 @@ async def doc(ctx):
     embed.add_field(name="$stop", value="This command stops the currently playing YouTube video. Usage: $stop")
     embed.add_field(name="$rdog", value="This command sends a random dog image. Usage: $rdog")
     embed.add_field(name="$translate", value="This command translates text to a specified language. Usage: $translate [language code] [text]")
+    embed.add_field(name="$news", value="This command displays the latest news for the given keyword. Usage: $news [keyword]")
     await ctx.send(embed=embed)
 
 
@@ -76,7 +77,7 @@ async def play(ctx, url: str):
         info = ytdl.extract_info(url, download=False)
         audio_url = info["url"]
         voice_client.play(discord.FFmpegPCMAudio(audio_url))
-        #sound = AudioSegment.from_file(audio_url, format="mp3")
+        #sound = AudioSegment.from_file(audio_url, format="mp3")youtube_dl
         #voice_client.play(discord.FFmpegPCMAudio(sound))
         if voice_client is None:
             voice_client = ctx.voice_client
