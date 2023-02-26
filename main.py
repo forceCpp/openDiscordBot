@@ -1,14 +1,14 @@
 import discord
 from discord.ext import commands
+import random
 from discord.ext.commands import Bot
 from dotenv import load_dotenv
 import os
 from requests import get
 import openai
 import json
-import asyncio
 import requests
-import time
+import re
 import yt_dlp
 from discord.voice_client import VoiceClient
 from pydub import AudioSegment
@@ -18,6 +18,7 @@ discordtoken = os.getenv("TOKEN")
 openai_api_key = os.getenv("API_KEY")
 openai.api_key = openai_api_key
 news_key = os.getenv("NEWS_API_KEY")
+weather_key = os.getenv("OPEN_WEATHER_KEY")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -28,11 +29,20 @@ ytdl = yt_dlp.YoutubeDL(yt_dl_opts)
 
 ffmpeg_options = {'options': "-vn"}
 
+#with open('badworlds.txt', 'r') as f:
+#    badworlds = f.read().splitlines()
 
 @bot.event
 async def on_ready():
     print("bot is ready")
 
+#@bot.event
+#async def on_message(message):
+#    for word in badworlds:
+#        if word in message.content:
+#            await message.delete()
+#        else:
+#            pass
 
 @bot.command()
 async def doc(ctx):
@@ -157,4 +167,27 @@ async def imggen(ctx, *, text: str = None):
         await ctx.send(response["data"][0]["url"])
     except:
         await ctx.send("nsfw images are not allowed")
+
+@bot.command()
+async def weather(ctx, *, city: str = None):
+    try:
+        weather_data = requests.get(
+                f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&APPID={weather_key}")
+        weather = weather_data.json()['weather'][0]['main']
+        temp = round(weather_data.json()['main']['temp'])
+        celsius = (temp - 32) * 5/9
+        int_celsius = int(celsius)
+
+        if weather_data.json()['cod'] == '404':
+            await ctx.send(f"city {city} not found")
+
+        await ctx.send(f"""
+The Weather in {city} is {weather}
+The temperature in {city} is around: {temp}ºF or {int_celsius}°C
+""")
+    except KeyError:
+        print("missing api key")
+        await ctx.send("oops somthing went wong")
+
+
 bot.run(discordtoken)

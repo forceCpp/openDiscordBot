@@ -16,12 +16,13 @@ add this to the `.env` file
 API_KEY =your_openai_api_key
 TOKEN=discord_token
 NEWS_API_KEY=news_api_key
+OPEN_WEATHER_KEY=open_weather_key
 ```
 you can create a discord bot and get you token at **https://discord.com/developers/applications**
 for a openai API key visit **https://beta.openai.com/signup/**
 for news api visit **https://newsapi.org/**
 > only Requests 1,000 are allowed per day for the news api
-
+and for the open weather API key visit **https://openweathermap.org/appid**
 # Run 
 
 **Windows**
