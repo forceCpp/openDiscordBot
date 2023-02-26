@@ -56,6 +56,7 @@ async def doc(ctx):
     embed.add_field(name="$rdog", value="This command sends a random dog image. Usage: $rdog")
     embed.add_field(name="$translate", value="This command translates text to a specified language. Usage: $translate [language code] [text]")
     embed.add_field(name="$news", value="This command displays the latest news for the given keyword. Usage: $news [keyword]")
+    embed.add_field(name="$weather", value="this command dispalys the weather in you city Usage: $weather [city_name]")
     await ctx.send(embed=embed)
 
 
@@ -178,16 +179,16 @@ async def weather(ctx, *, city: str = None):
         celsius = (temp - 32) * 5/9
         int_celsius = int(celsius)
 
-        if weather_data.json()['cod'] == '404':
-            await ctx.send(f"city {city} not found")
+        # if weather_data.json()['code'] == '404':
+        #    await ctx.send(f"city {city} not found")
 
         await ctx.send(f"""
 The Weather in {city} is {weather}
 The temperature in {city} is around: {temp}ºF or {int_celsius}°C
 """)
     except KeyError:
-        print("missing api key")
-        await ctx.send("oops somthing went wong")
+        print("are you missing api key?")
+        await ctx.send(f"oops somthing went wong i think {city} does not exist")
 
 
 bot.run(discordtoken)
